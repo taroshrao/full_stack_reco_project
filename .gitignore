@@ -1,0 +1,17 @@
+# Django Backend
+backend_django/.env
+backend_django/venv/
+backend_django/__pycache__/
+backend_django/*/migrations/*.pyc
+backend_django/db.sqlite3
+backend_django/media/
+
+# Next.js Frontend
+frontend_nextjs/local
+frontend_nextjs/node_modules/
+frontend_nextjs/.next/
+frontend_nextjs/npm-debug.log*
+
+# General
+.DS_Store
+*.log
