@@ -1,89 +1,134 @@
-Recommendation Web App
-Overview
-This is a web application designed to provide recommendations based on user queries. Users can type their requests into an input field or select from a list of pre-defined prompt buttons to get suggestions for books, movies, podcasts, courses, and more. The application interacts with a backend API to fetch these recommendations.
-<img width="1899" height="985" alt="image" src="https://github.com/user-attachments/assets/3a763112-307c-41c5-a5f7-db32c6da1737" />
-<img width="1910" height="984" alt="image" src="https://github.com/user-attachments/assets/0248cc10-5ba8-4233-9a49-4261b674e3bc" />
+# 🎯 Recommendation Web App
 
-Features
-Dynamic Search Input: Users can type any query to get recommendations.
+A dynamic web application that provides smart recommendations based on user queries—whether you're hunting for books, movies, podcasts, courses, or more. Users can either type in custom queries or choose from predefined prompt buttons, and the app interacts with a backend API to fetch personalized suggestions.
 
-Prompt Buttons: Quick access buttons for common recommendation types (e.g., "Suggest books about habits", "Recommend movies like Inception").
+![App Screenshot 1](https://github.com/user-attachments/assets/3a763112-307c-41c5-a5f7-db32c6da1737)
+![App Screenshot 2](https://github.com/user-attachments/assets/0248cc10-5ba8-4233-9a49-4261b674e3bc)
 
-Loading Indicator: Shows "Searching..." when a request is in progress.
+---
 
-Error Display: Informs the user if there's an error during the recommendation process.
+## ✨ Features
 
-Responsive Design: Built with Tailwind CSS for a mobile-first and responsive user experience.
+- **Dynamic Search Input**: Enter any query and get tailored recommendations.
+- **Prompt Buttons**: One-click access to curated recommendation templates (e.g., _Suggest books about habits_, _Recommend movies like Inception_).
+- **Loading Indicator**: Displays _"Searching..."_ while results are being fetched.
+- **Error Handling**: Notifies users if something goes wrong during the fetch process.
+- **Responsive UI**: Designed with Tailwind CSS for seamless mobile and desktop experiences.
 
-Technologies Used
-Frontend:
+---
 
-React (with Next.js)
+## 🛠️ Technologies
 
-Tailwind CSS
+### Frontend
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
 
-Backend: (Assumed, as per the fetch call in the code)
+### Backend
+_Any RESTful backend (not bundled in repo)—can be built with:_
+- Node.js (Express)
+- Python (Flask/Django)
+- Ruby on Rails
+- Go
+- Or any other framework that supports REST APIs
 
-Any backend technology capable of serving a REST API (e.g., Node.js, Python Flask/Django, Ruby on Rails, Go, etc.)
+---
 
-Setup Instructions
-To get this project up and running on your local machine, follow these steps:
+## 🚀 Getting Started
 
-1. Clone the Repository
+### 1. Clone the Repo
+
+```bash
 git clone <your-repository-url>
 cd <your-project-folder>
+```
 
-2. Frontend Setup (Next.js)
-Navigate to the frontend directory (assuming your React/Next.js code is in the root or a frontend folder).
+### 2. Frontend Setup
 
-cd <frontend-directory> # e.g., cd . if your Next.js app is in the root
-npm install # or yarn install
+Navigate to your frontend directory (replace `<frontend-directory>` if needed):
 
-3. Backend Setup
-Note: The backend code is not provided here. You will need to have your backend API running for the frontend to function correctly.
+```bash
+cd <frontend-directory> # Example: cd .
+npm install             # or yarn install
+```
 
-Navigate to your backend project directory.
+### 3. Backend Setup
 
+Ensure your backend is running at `http://localhost:8000`.
+
+```bash
 cd <backend-directory>
+# For Node.js
+npm install
+npm start
 
-Install backend dependencies. (Example for Node.js/Python)
+# For Python (Flask/Django)
+pip install -r requirements.txt
+python app.py
+```
 
-For Node.js: npm install
+### 🔧 CORS Configuration (Important!)
 
-For Python: pip install -r requirements.txt
+If your frontend is at port `3000` and backend is at `8000`, you must configure CORS on the backend:
 
-Start your backend server. Ensure it's running on the port expected by the frontend (currently http://localhost:8000).
+#### Node.js (Express)
 
-Example command: npm start or python app.py
+```js
+const cors = require("cors");
 
-Important: If your backend runs on a different port, you will need to update the fetch URL in src/components/MainContentSection.js (line 21) to match your backend's actual port.
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
+```
 
-// src/components/MainContentSection.js
-// ...
-const response = await fetch("http://localhost:8000/api/recommend", { // Change 8000 if your backend uses a different port
-// ...
+#### Python (Flask)
 
-Configure CORS (Cross-Origin Resource Sharing) on your backend.
-If your frontend and backend are running on different ports (e.g., frontend on 3000, backend on 8000), you must enable CORS on your backend to allow requests from the frontend. Refer to your backend framework's documentation for how to do this (e.g., cors package for Node.js Express, Flask-CORS for Python Flask).
+```python
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
+CORS_ALLOW_CREDENTIALS = True
+```
 
-4. Run the Frontend
-Once your backend server is running, start the Next.js development server:
+Ensure you update the fetch URL and credentials mode in your frontend code accordingly:
 
-npm run dev # or yarn dev
+```js
+const response = await fetch("http://localhost:8000/api/recommend", {
+  credentials: "include"
+});
+```
 
-The application should now be accessible in your browser at http://localhost:3000 (or the port Next.js specifies).
+> ⚠️ If your backend runs on a different port, modify the URL in `src/components/MainContentSection.js` (line 21).
 
-Usage
-Open your browser and navigate to the application URL (e.g., http://localhost:3000).
+---
 
-Type your recommendation query into the search bar.
+### 4. Run the Frontend Server
 
-Click the "Search" button or select one of the prompt buttons.
+```bash
+npm run dev  # or yarn dev
+```
 
-The application will display recommendations fetched from the backend.
+Visit: [http://localhost:3000](http://localhost:3000)
 
-Contributing
-Contributions are welcome! Please feel free to fork the repository, create a new branch, and submit a pull request for any improvements or bug fixes.
+---
 
-License
-This project is open-source and available under the MIT License.
+## 🎓 Usage
+
+1. Navigate to `http://localhost:3000`.
+2. Type a query into the search bar or click a prompt button.
+3. View instant recommendations based on your input.
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork, branch, and submit a pull request for improvements, bug fixes, or new features!
+
+---
+
+## 📄 License
+
+This project is open-source under the [MIT License](LICENSE).
+
+---
