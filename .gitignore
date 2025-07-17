@@ -3,7 +3,7 @@ backend_django/.env
 backend_django/venv/
 backend_django/__pycache__/
 backend_django/*/migrations/*.pyc
-backend_django/db.sqlite3
+backend_django/smartreco_backend/db.sqlite3
 backend_django/media/
 
 # Next.js Frontend
